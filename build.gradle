@@ -1,0 +1,49 @@
+apply plugin: 'java'
+compileJava {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+}
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	testImplementation(platform('org.junit:junit-bom:5.7.0'))
+	testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+}
+jar {
+    baseName = 'gs-gradle'
+    version =  '0.1.0'
+}
+wrapper {
+    gradleVersion = '6.6.1'
+}
+compileJava {
+	options.encoding = 'UTF-8'
+}
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+System.setOut(new PrintStream(System.out, true, "UTF-8"))
+apply plugin: 'application'
+application { 
+	applicationDefaultJvmArgs = ['-Dfile.encoding=cp866'] 
+}
+mainClassName = 'moumie.Main'
+task fatJar(type: Jar) {
+   baseName = project.name + '-all'
+   manifest {
+        attributes 'Main-Class': 'moumie.Main'
+    }
+   from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } 
+    }
+   with jar
+   exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+}

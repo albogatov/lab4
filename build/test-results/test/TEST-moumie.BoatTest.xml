@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="moumie.BoatTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-23T05:50:15" hostname="MSI" time="0.001">
+  <properties/>
+  <testcase name="initiateTest()" classname="moumie.BoatTest" time="0.001"/>
+  <system-out><![CDATA[Лодка мягко уткнулась в Песок
+Лодка врезалась в Песок
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
