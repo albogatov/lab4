@@ -7,6 +7,14 @@ public final class Child extends Parent {
 	public int getSkill() {
 		return this.skill;
 	}
+	public Child(String name, State state, Thing locObj, int i, String g) {
+		setName(name);
+		setState(state);
+		setLocation(locObj);
+		setSkill(i);
+		setGender(g);
+		super.increaseNumber();
+	}
 	public Child(String name, State state, Location loc, int i, String g) {
 		setName(name);
 		setState(state);
@@ -40,6 +48,13 @@ public final class Child extends Parent {
 				}
 			}
 		}
+	}
+	public void jumpOutObj(Location loc) {
+		if(getGender().equals("М"))
+			System.out.println(getName() + " выпрыгнул из " + this.showObjLocation() + " на " + loc.toString());
+		else
+			System.out.println(getName() + " выпрыгнула из " + this.showObjLocation() + " на " + loc.toString());
+		exitLocation(loc);
 	}
 	public void jumpOut(Location loc) {
 		if(getGender().equals("М"))

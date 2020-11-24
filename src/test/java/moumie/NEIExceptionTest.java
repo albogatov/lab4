@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class NEIExceptionTest {
 	@Test
 	public void initiateTest() throws NotEnoughItemsException {
-		Parent parent = new Parent("Отец", State.ACTIVE, Location.BOAT, "М");
+		Parent parent = new Parent("Отец", State.ACTIVE, Location.BEACH, "М");
 		Rock rocks = new Rock("Камень", State.EXISTS, Location.BEACH, 10);
 		parent.pickUpRocks(rocks, 5);
 		assertThrows(NotEnoughItemsException.class, () -> { parent.createFireplace(); });

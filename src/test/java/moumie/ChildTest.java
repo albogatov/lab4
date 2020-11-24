@@ -22,10 +22,10 @@ public class ChildTest {
 	}
 	@Test
 	public void initiateTest2() {
-		child = new Child("Ребенок1", State.ACTIVE, Location.BOAT, 5, "М");
+		child = new Child("Ребенок1", State.ACTIVE, Location.WATER, 5, "М");
 		assertEquals(child.getName(), "Ребенок1");
 		assertEquals(child.getState(), State.ACTIVE);
-		assertEquals(child.getLocation(), Location.BOAT);
+		assertEquals(child.getLocation(), Location.WATER);
 		assertEquals(child.getSkill(), 5);
 		assertEquals(child.getGender(), "М");
 		assertFalse(child.isSuccessful());

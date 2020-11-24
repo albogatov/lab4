@@ -2,14 +2,15 @@ package moumie;
 
 public class Main {
 	public static void main(String[] args) throws BoatDestructionException, NotEnoughItemsException {
+		Boat boat = new Boat("Лодка", State.EXISTS, Location.WATER); 
 		Wind wind = new Wind("Ветер", State.BLOWING, Location.BEACH);
-		Parent mom = new Parent("Муми-мама", State.EXISTS, Location.BOAT, "Ж");
-		Child son = new Child("Муми-тролль", State.EXISTS, Location.BOAT, 10, "М");
+		Parent mom = new Parent("Муми-мама", State.EXISTS, boat, "Ж");
+		Child son = new Child("Муми-тролль", State.EXISTS, boat, 10, "М");
+		boat.setOwner(son);
 		Shallow sh1 = new Shallow("Отмель");
 		Shallow sh2 = new Shallow("Отмель");
 		Shallow sh3 = new Shallow("Отмель");
 		Sand sand = new Sand("Песок", State.IS_WET, Location.BEACH);
-		Boat boat = new Boat("Лодка", State.EXISTS, Location.WATER, son); 
 		Falin falin = new Falin("Фалинь", State.EXISTS, son);
 		Rock rocks = new Rock("Камень", State.EXISTS, Location.BEACH, 10);
 		Pancakes food = new Pancakes("Оладьи", State.COLD, mom);
@@ -22,12 +23,14 @@ public class Main {
 		shadow.cover(sand);
 		Lillies lillies = new Lillies("Лилии", State.EXISTS, Location.BEACH);
 		Table table = new Table("Стол", State.EXISTS, mom);
-		LivingBeing.Look(2, Location.OUTSIDE_BOAT);
+		LivingBeing.LookOverboard(2, Boat.Board.board);
 		try {
 			son.maneuverAround(sh1, boat);
+			son.maneuverAround(sh2, boat);
+			son.maneuverAround(sh3, boat);
 			boat.noseBumpInto(sand);
 			son.holdOnTo(falin);
-			son.jumpOut(Location.BEACH);
+			son.jumpOutObj(Location.BEACH);
 			mom.switchLocation(Location.BEACH);
 			if(Location.BEACH.getInhabitants()>=2) {
 				Location.BEACH.setState(State.ACTIVE);

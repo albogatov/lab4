@@ -20,6 +20,13 @@ public class Parent extends LivingBeing {
 	public Parent() {
 		
 	}
+	public Parent(String name, State state, Thing locObj, String g) {
+		setName(name);
+		setState(state);
+		setLocation(locObj);
+		setGender(g);
+		super.increaseNumber();
+	}
 	public Parent(String name, State state, Location loc, String g) {
 		setName(name);
 		setState(state);

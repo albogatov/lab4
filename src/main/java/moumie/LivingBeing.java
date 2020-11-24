@@ -5,6 +5,7 @@ public abstract class LivingBeing implements Interactable, Animate {
 	private String name;
 	private State state;
 	private Location loc = null;
+	private Thing locObject;
 	private String gender;
 	private static int exist;
 	public void setGender(String g) {
@@ -46,7 +47,14 @@ public abstract class LivingBeing implements Interactable, Animate {
 		}
 		this.loc = loc;
 		this.loc.changeInhabitants(1);
-		
+	}
+	@Override
+	public void setLocation(Thing locObject) {
+		this.locObject = locObject;
+	}
+	@Override 
+	public String showObjLocation() {
+		return this.locObject.toString();
 	}
 	@Override
 	public Location getLocation() {
@@ -80,16 +88,24 @@ public abstract class LivingBeing implements Interactable, Animate {
 			System.out.println("Все посмотрели " + loc.toString());
 		}
 	}
+	static void LookOverboard(int i, Boat.Board thing) {
+		if(i<LivingBeing.getNumber())
+			System.out.println("Некоторые посмотрели за" + thing.toString());
+		if(i==LivingBeing.getNumber()) {
+			System.out.println("Все посмотрели за" + thing.toString());
+		}
+	}
 	public boolean isSuccessful() {
 		return true;
 	}
 	public void exitLocation(Location loc) {
-		this.loc.changeInhabitants(-1);
+		if(this.loc != null)
+			this.loc.changeInhabitants(-1);
 		setLocation(loc);
 		this.loc.changeInhabitants(1);
 	}
 	public void switchLocation(Location loc) {
-		System.out.println(getName() + " перешел из " + this.showLocation() + " в " + loc.toString());
+		System.out.println(getName() + " перешел из " + this.showObjLocation() + " в " + loc.toString());
 		exitLocation(loc);
 	}
 	public void holdOnTo(Thing thing) {

@@ -9,15 +9,30 @@ public final class Boat extends Thing implements Destructible {
 	public int getDamage() {
 		return this.damage;
 	}
+	public Boat(String def, State state, Location loc) {
+		setDefinition(def);
+		setState(state);
+		setLocation(loc);
+		nose = new BoatNose();
+		Board.board = new Board();
+	}
 	public Boat(String def, State state, Location loc, LivingBeing owner) {
 		setDefinition(def);
 		setState(state);
 		setLocation(loc);
 		setOwner(owner);
 		nose = new BoatNose();
+		Board.board = new Board();
 	}
 	public Boat() {
 		
+	}
+	public static class Board {
+		static Board board;
+		private String partDef = "Борт";
+		public String toString() {
+			return partDef;
+		}
 	}
 	public class BoatNose {
 		private final String partDef = "Нос лодки";
@@ -27,6 +42,9 @@ public final class Boat extends Thing implements Destructible {
 		public void bumpInto(Thing thing) throws BoatDestructionException {
 			System.out.print("Носом ");
 			Boat.this.bumpInto(thing);
+		}
+		public String toString() {
+			return partDef;
 		}
 	}
 	public void bumpInto(Thing thing) throws BoatDestructionException {

@@ -18,10 +18,10 @@ public class ParentTest {
 	}
 	@Test
 	public void initiateTest2() {
-		parent = new Parent("Отец", State.ACTIVE, Location.BOAT, "М");
+		parent = new Parent("Отец", State.ACTIVE, Location.BEACH, "М");
 		assertEquals(parent.getName(), "Отец");
 		assertEquals(parent.getState(), State.ACTIVE);
-		assertEquals(parent.getLocation(), Location.BOAT);
+		assertEquals(parent.getLocation(), Location.BEACH);
 		assertEquals(parent.getGender(), "М");
 	}
 	@Test

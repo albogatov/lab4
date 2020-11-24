@@ -1,7 +1,5 @@
 package moumie;
 public enum Location {
-	BOAT("Лодка", 0, State.EXISTS),
-	OUTSIDE_BOAT("За борт лодки", 0, State.EXISTS),
 	WATER("Вода", 0, State.EXISTS),
 	BEACH("Берег", 0, State.EXISTS);
 	
